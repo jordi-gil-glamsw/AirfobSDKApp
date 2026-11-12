@@ -1,0 +1,11 @@
+framework module SupremaAC {
+  umbrella header "SupremaAC.h"
+  export *
+
+  module * { export * }
+}
+
+module SupremaAC.Swift {
+  header "SupremaAC-Swift.h"
+  requires objc
+}

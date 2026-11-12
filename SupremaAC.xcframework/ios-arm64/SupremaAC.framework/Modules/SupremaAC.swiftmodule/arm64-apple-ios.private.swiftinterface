@@ -1,0 +1,1231 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.2 effective-5.10 (swiftlang-6.2.0.19.9 clang-1700.3.19.1)
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name SupremaAC
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2
+import CommonCrypto
+import CoreBluetooth
+import CoreLocation
+import CoreMotion
+import Darwin
+import Foundation
+import MachO
+import SQLite3
+@_exported import SupremaAC
+import Swift
+import SystemConfiguration
+import UIKit
+import UserNotifications
+import WebKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@_hasMissingDesignatedInitializers public class ARMAFilter {
+  public func addValue(_ value: Swift.Double)
+  public func getFilteredRSSI() -> Swift.Double
+  public func resetFilter()
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class Site : ObjectiveC.NSObject {
+  @objc public var cardTotal: Swift.String
+  @objc public var countryCode: Swift.String
+  @objc public var credit: Swift.String
+  @objc public var creditTotal: Swift.String
+  @objc public var id: Swift.String
+  @objc public var name: Swift.String
+  @objc public var refill: Swift.String
+  @objc public var refillTotal: Swift.String
+  @objc public var accessType: Swift.String
+  @objc deinit
+}
+public func decode(jwt: Swift.String) throws -> any SupremaAC.JWT
+public struct Claim {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var rawValue: Any? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var string: Swift.String? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var boolean: Swift.Bool? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var double: Swift.Double? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var integer: Swift.Int? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var date: Foundation.Date? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var array: [Swift.String]? {
+    get
+  }
+  #endif
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers public class SiteResponse : SupremaAC.Response {
+  @objc public var record: SupremaAC.Site
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers public class DeviceGroupResponse : SupremaAC.Response {
+  @objc public var total: Swift.Int
+  @objc public var records: [SupremaAC.DeviceGroup]
+  @objc public func insert(_ group: SupremaAC.DeviceGroup, at: Swift.Int)
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class EventLog : ObjectiveC.NSObject {
+  @objc public var id: Swift.String
+  @objc public var siteId: Swift.String
+  @objc public var cardNumber: Swift.String
+  @objc public var category: Swift.String
+  @objc public var code: Swift.String
+  @objc public var createdAt: Swift.String
+  @objc public var deviceName: Swift.String
+  @objc public var deviceSerial: Swift.String
+  @objc public var deviceType: Swift.String
+  @objc public var dst: Swift.Int
+  @objc public var issuedAt: Swift.String
+  @objc public var offset: Swift.Int
+  @objc public var timestamp: Foundation.TimeInterval
+  @objc public var timezone: Swift.String
+  @objc public var updatedAt: Swift.String
+  @objc public var userId: Swift.String
+  @objc public var userKey: Swift.String
+  @objc public var userName: Swift.String
+  @objc public var _id: Swift.String
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class Queue {
+  public var count: Swift.Int
+  @objc deinit
+}
+@objc @objcMembers public class CardExtraInfo : ObjectiveC.NSObject {
+  @objc public var customInfo: Swift.String
+  @objc public var department: Swift.String
+  @objc public var cardHolderId: Swift.String
+  @objc public var endDate: Swift.String
+  @objc public var format: Swift.String
+  @objc public var ID: Swift.String
+  @objc public var name: Swift.String
+  @objc public var number: Swift.String
+  @objc public var phone: Swift.String
+  @objc public var portrait: Swift.String
+  @objc public var refresh: Swift.String
+  @objc public var siteName: Swift.String
+  @objc public var startDate: Swift.String
+  @objc public var status: Swift.String
+  @objc public var cardType: Swift.String
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public init(_ raw: [Swift.String : Swift.String]?)
+  #endif
+  @objc public func translateToDictionary() -> [Swift.String : Swift.String]
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class ACBLEManager : ObjectiveC.NSObject, CoreBluetooth.CBCentralManagerDelegate, CoreBluetooth.CBPeripheralManagerDelegate, CoreBluetooth.CBPeripheralDelegate {
+  public typealias Handler = ([Swift.String : Any]) -> Swift.Void
+  public var peripheralManager: CoreBluetooth.CBPeripheralManager?
+  public var scanManager: CoreBluetooth.CBCentralManager?
+  public func refreshPeripheralManager()
+  public func startScan()
+  public func stopScan()
+  public func disconnect()
+  public func isScanning() -> Swift.Bool
+  @objc public func centralManager(_ central: CoreBluetooth.CBCentralManager, didDiscover peripheral: CoreBluetooth.CBPeripheral, advertisementData: [Swift.String : Any], rssi RSSI: Foundation.NSNumber)
+  @objc public func centralManager(_ central: CoreBluetooth.CBCentralManager, didConnect peripheral: CoreBluetooth.CBPeripheral)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func centralManager(_ central: CoreBluetooth.CBCentralManager, didDisconnectPeripheral peripheral: CoreBluetooth.CBPeripheral, error: (any Swift.Error)?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func centralManager(_ central: CoreBluetooth.CBCentralManager, didFailToConnect peripheral: CoreBluetooth.CBPeripheral, error: (any Swift.Error)?)
+  #endif
+  @objc public func centralManager(_ central: CoreBluetooth.CBCentralManager, willRestoreState dict: [Swift.String : Any])
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverServices error: (any Swift.Error)?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverCharacteristicsFor service: CoreBluetooth.CBService, error: (any Swift.Error)?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didUpdateValueFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
+  #endif
+  @objc public func centralManagerDidUpdateState(_ central: CoreBluetooth.CBCentralManager)
+  @objc public func peripheralManagerDidUpdateState(_ peripheral: CoreBluetooth.CBPeripheralManager)
+  @objc public func peripheralManagerIsReady(toUpdateSubscribers peripheral: CoreBluetooth.CBPeripheralManager)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func peripheralManager(_ peripheral: CoreBluetooth.CBPeripheralManager, didAdd service: CoreBluetooth.CBService, error: (any Swift.Error)?)
+  #endif
+  @objc public func peripheralManager(_ peripheral: CoreBluetooth.CBPeripheralManager, central: CoreBluetooth.CBCentral, didSubscribeTo characteristic: CoreBluetooth.CBCharacteristic)
+  @objc public func peripheralManager(_ peripheral: CoreBluetooth.CBPeripheralManager, central: CoreBluetooth.CBCentral, didUnsubscribeFrom characteristic: CoreBluetooth.CBCharacteristic)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func peripheralManager(_ peripheral: CoreBluetooth.CBPeripheralManager, didOpen channel: CoreBluetooth.CBL2CAPChannel?, error: (any Swift.Error)?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func peripheralManager(_ peripheral: CoreBluetooth.CBPeripheralManager, didPublishL2CAPChannel PSM: CoreBluetooth.CBL2CAPPSM, error: (any Swift.Error)?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func peripheralManager(_ peripheral: CoreBluetooth.CBPeripheralManager, didUnpublishL2CAPChannel PSM: CoreBluetooth.CBL2CAPPSM, error: (any Swift.Error)?)
+  #endif
+  @objc public func peripheralManager(_ peripheral: CoreBluetooth.CBPeripheralManager, didReceiveWrite requests: [CoreBluetooth.CBATTRequest])
+  @objc public func peripheralManager(_ peripheral: CoreBluetooth.CBPeripheralManager, willRestoreState dict: [Swift.String : Any])
+  @objc public func peripheralManager(_ peripheral: CoreBluetooth.CBPeripheralManager, didReceiveRead request: CoreBluetooth.CBATTRequest)
+  public func doTomNotification(_ datas: [Foundation.Data])
+  public func doReadResponse(_ response: [Swift.String : Any], data: Foundation.Data)
+  public func doFloorReadResponse(_ response: [Swift.String : Any], data: Foundation.Data)
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getPublicKeyData(_ uuid: Swift.String) -> Foundation.Data?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getOTPData(_ uuid: Swift.String) -> Swift.UInt32?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getDeviceType(_ uuid: Swift.String) -> Foundation.Data?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getMacAddress(_ uuid: Swift.String) -> Foundation.Data?
+  #endif
+  public func connectNearestDevice()
+  public func loadConnectionRSSI()
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func setStatusObserverBlock(_ statusObserverBlock: @escaping (SupremaAC.BLEProcessStruct, CoreBluetooth.CBPeripheral?) -> Swift.Void)
+  #endif
+  public func doSendDataWithOldDevice(_ sendData: Foundation.Data, deviceType: Swift.Int)
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getDeviceSerial(_ uuid: Swift.String) -> Swift.String?
+  #endif
+  public func startAdvertising(_ siteId: Swift.String, userId: Swift.String)
+  public func stopAdvertising()
+  public func getDiscoverPeripheralList() -> [[Swift.String : Any]]
+  public func clearDiscoverPeripheralList()
+  public func isTOMDevice(_ uuidString: Swift.String) -> Swift.Bool
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers public class SiteRoleResponse : SupremaAC.Response {
+  @objc public var record: SupremaAC.SiteRole
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class NoticeManagementProvider : ObjectiveC.NSObject {
+  @objc public static let sharedInstance: SupremaAC.NoticeManagementProvider
+  public typealias CompleteNoticesHandlerBlock = (SupremaAC.NoticeResponse?, (any Swift.Error)?) -> Swift.Void
+  public typealias CompleteNoticeDetailHandlerBlock = (SupremaAC.NoticeDetail?, (any Swift.Error)?) -> Swift.Void
+  @objc public func loadNotice(_ siteId: Swift.String, page: Swift.Int, size: Swift.Int, handler: @escaping SupremaAC.NoticeManagementProvider.CompleteNoticesHandlerBlock)
+  @objc public func loadNoticeDetial(_ siteId: Swift.String, noticeId: Swift.String, handler: @escaping SupremaAC.NoticeManagementProvider.CompleteNoticeDetailHandlerBlock)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class JKBigDecimal {
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers public class DevicesResponse : SupremaAC.Response {
+  @objc public var total: Swift.Int
+  @objc public var records: [SupremaAC.Device]
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class FirebaseManager : ObjectiveC.NSObject {
+  public static let sharedInstance: SupremaAC.FirebaseManager
+  public func setFcmToken(_ token: Swift.String)
+  public func getFcmToken() -> Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class SupremaUtil : ObjectiveC.NSObject {
+  public static func SLog(_ format: Swift.String, args: any Swift.CVarArg...)
+  @objc public static func hexStringToData(_ hexString: Swift.String) -> Foundation.Data
+  @objc public static func dataToHex(_ data: Foundation.Data) -> Swift.String
+  @objc public static func getIntegerFromHexString(_ hexString: Swift.String) -> Swift.Int
+  @objc public static func stringFromDateString(_ dateString: Swift.String, originDateFormat: Swift.String, transDateFormat: Swift.String) -> Swift.String
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func localDateFromString(_ dateString: Swift.String, originFormat: Swift.String) -> Foundation.Date?
+  #endif
+  @objc public static func parseManufactureData(_ manufacturer: Foundation.Data) -> [Swift.String : Foundation.Data]
+  @objc public static func generatePacketStructure(_ datas: [Foundation.Data]) -> Foundation.Data
+  @objc public static func getServiceUUIDList(_ isAdminMode: Swift.Bool = false) -> [CoreBluetooth.CBUUID]
+  #if compiler(>=5.3) && $NonescapableTypes
+  public static func setAdvertisementData(_ uuid: Swift.String, data: [Swift.String : Foundation.Data], uuids: [CoreBluetooth.CBUUID], dict: [Swift.String : (Foundation.Data?, Foundation.Data?, Foundation.Data?, Foundation.Data?, Swift.Double?, CoreBluetooth.CBUUID?, Foundation.Data?)]) -> [Swift.String : (Foundation.Data?, Foundation.Data?, Foundation.Data?, Foundation.Data?, Swift.Double?, CoreBluetooth.CBUUID?, Foundation.Data?)]
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public static func setAdvertisementData(_ uuidString: Swift.String, data: [Swift.String : Foundation.Data], dict: [Swift.String : (Foundation.Data?, Foundation.Data?, Foundation.Data?, Foundation.Data?, Swift.Double?, Foundation.Data?)]) -> [Swift.String : (Foundation.Data?, Foundation.Data?, Foundation.Data?, Foundation.Data?, Swift.Double?, Foundation.Data?)]
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public static func setAdminAdvertisementData(_ uuidString: Swift.String, data: [Swift.String : Foundation.Data], uuids: [CoreBluetooth.CBUUID], dict: [Swift.String : (Foundation.Data?, Foundation.Data?, Foundation.Data?, Foundation.Data?, Swift.Double?, CoreBluetooth.CBUUID?, Foundation.Data?)]) -> [Swift.String : (Foundation.Data?, Foundation.Data?, Foundation.Data?, Foundation.Data?, Swift.Double?, CoreBluetooth.CBUUID?, Foundation.Data?)]
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getStringValueWithAny(_ value: Any?) -> Swift.String
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getDictionaryValueWithAny(_ value: Any?) -> [Swift.String : Any]
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getDictionaryListValueWithAny(_ value: Any?) -> [[Swift.String : Any]]
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getBoolValueWithAny(_ value: Any?, defaultValue: Swift.Bool = false) -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getTimeIntervalValueWithAny(_ value: Any?) -> Foundation.TimeInterval
+  #endif
+  @objc public static func getSystemUptime() -> _DarwinFoundation2.time_t
+  @objc public static func isShouldExit() -> Swift.Bool
+  @objc public static func getPublicKeyForLib2() -> Foundation.Data
+  @objc public static func negativeIntToData(_ value: Swift.Int) -> Foundation.Data
+  @objc public static func getDeviceModel() -> Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class LoginResult : ObjectiveC.NSObject {
+  @objc public func isRequiredMFA() -> Swift.Bool
+  @objc public func getUnusedLock() -> Swift.Bool
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers public class ACURLSessionManager : ObjectiveC.NSObject, Foundation.URLSessionDelegate {
+  @objc public static let sharedInstance: SupremaAC.ACURLSessionManager
+  public typealias NetworkCompleteBlock = (Swift.Dictionary<Swift.String, Any>, (any Swift.Error)?) -> Swift.Void
+  @objc public var serverURL: Swift.String
+  @objc public var URLsession: Foundation.URLSession?
+  @objc public func cancelAllRequests()
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func convertToDate(_ body: Swift.String?) -> Foundation.Data?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func request(url: Swift.String, param: [Swift.String : Any]?, method: SupremaAC.MethodType, token: Swift.String?, completionHandler: @escaping SupremaAC.ACURLSessionManager.NetworkCompleteBlock)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func request(url: Swift.String, dataParam: Foundation.Data?, method: SupremaAC.MethodType, token: Swift.String?, completionHandler: @escaping SupremaAC.ACURLSessionManager.NetworkCompleteBlock)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func parseRequestResult(data: Foundation.Data?, response: Foundation.URLResponse?, returnBlock: @escaping ([Swift.String : Any], (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func urlSession(_ session: Foundation.URLSession, didReceive challenge: Foundation.URLAuthenticationChallenge, completionHandler: @escaping (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?) -> Swift.Void)
+  #endif
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers public class LoginResponse : SupremaAC.Response {
+  @objc public var record: SupremaAC.LoginResult
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers public class NoticeResponse : SupremaAC.Response {
+  @objc public var total: Swift.Int
+  @objc public var siteId: Swift.String
+  @objc public var size: Swift.Int
+  @objc public var page: Swift.Int
+  @objc public var notices: [SupremaAC.Notice]
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class ACLocationManager : CoreLocation.CLLocationManager, CoreLocation.CLLocationManagerDelegate {
+  @objc public func locationManager(_ manager: CoreLocation.CLLocationManager, didUpdateLocations locations: [_LocationEssentials.CLLocation])
+  @objc public func locationManager(_ manager: CoreLocation.CLLocationManager, didFailWithError error: any Swift.Error)
+  @objc public func locationManager(_ manager: CoreLocation.CLLocationManager, didEnterRegion region: CoreLocation.CLRegion)
+  @objc public func locationManager(_ manager: CoreLocation.CLLocationManager, didExitRegion region: CoreLocation.CLRegion)
+  @objc public func locationManager(_ manager: CoreLocation.CLLocationManager, didDetermineState state: CoreLocation.CLRegionState, for region: CoreLocation.CLRegion)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func locationManager(_ manager: CoreLocation.CLLocationManager, monitoringDidFailFor region: CoreLocation.CLRegion?, withError error: any Swift.Error)
+  #endif
+  @objc public func locationManager(_ manager: CoreLocation.CLLocationManager, didStartMonitoringFor region: CoreLocation.CLRegion)
+  @objc public func locationManager(_ manager: CoreLocation.CLLocationManager, didRangeBeacons beacons: [CoreLocation.CLBeacon], in region: CoreLocation.CLBeaconRegion)
+  @objc public func locationManager(_ manager: CoreLocation.CLLocationManager, didChangeAuthorization status: CoreLocation.CLAuthorizationStatus)
+  public func getLocationStatus() -> Swift.String
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class CardHolder {
+  public var cardId: Swift.String
+  public var cardHolderId: Swift.String
+  public var email: Swift.String
+  public var token: Swift.String
+  public var siteId: Swift.String
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class JKBigInteger {
+  @objc deinit
+}
+@objc @objcMembers public class AcCard : ObjectiveC.NSObject {
+  @objc public var cardData: Swift.String
+  @objc public var startDateEpochTime: Swift.String
+  @objc public var endDateEpochTime: Swift.String
+  @objc public var refresh: Swift.String
+  @objc public var cardDataBit: Swift.String
+  @objc public var cardEncType: Swift.String
+  @objc public var formatCode: Swift.String
+  @objc public var signature: Swift.String
+  @objc public var cardType: Swift.String
+  @objc public var meta: [Swift.String : Any]
+  @objc public var ecdhCurve: Swift.String
+  @objc public var cardDataLen: Swift.String
+  @objc public var useType: Swift.String
+  @objc public init(_ raw: [Swift.String : Any])
+  @objc public init(cardData: Swift.String, startDate: Swift.String, endDate: Swift.String, refresh: Swift.String, cardDataBit: Swift.String, cardEncType: Swift.String, formatCode: Swift.String, signature: Swift.String, cardType: Swift.String, meta: [Swift.String : Any] = [String: Any](), ecdhCurve: Swift.String, cardDataLen: Swift.String, useType: Swift.String)
+  @objc public init(cardData: Swift.String, startDate: Swift.String, endDate: Swift.String, refresh: Swift.String, cardDataBit: Swift.String, cardEncType: Swift.String, formatCode: Swift.String, signature: Swift.String)
+  @objc public func translateToDictionary() -> [Swift.String : Any]
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class ACOTPManager : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class BLEPacketParser : ObjectiveC.NSObject {
+  @objc public var serial: Swift.String {
+    @objc get
+  }
+  @objc public var modelIdentifier: Swift.String {
+    @objc get
+  }
+  @objc public var isRegistered: Swift.Bool {
+    @objc get
+  }
+  @objc public func setManufacturer(_ manufacturer: Foundation.Data)
+  @objc public func setTxPower(_ value: Swift.Int)
+  @objc public func setTxTagging(_ value: Swift.Int)
+  @objc public func setDeviceGuardTime(_ value: Swift.Double)
+  @objc public func getType() -> Foundation.Data
+  @objc public func getOtp() -> Foundation.Data
+  @objc public func getSerialHexString() -> Swift.String
+  @objc public func getTxPower() -> Swift.Int
+  @objc public func getTxTagging() -> Swift.Int
+  @objc public func getRegistered() -> Swift.Int
+  @objc public func getDeviceGuardTime() -> Swift.Double
+  @objc public func getSerialData() -> Foundation.Data
+  @objc public func getDataList() -> Swift.Array<Any>
+  @objc public func toString() -> Swift.String
+  @objc public func toData() -> Foundation.Data
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class ACNetworkManager {
+  public typealias NetworkStatusBlock = (Swift.Int) -> Swift.Void
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getNetworkStatus() -> Swift.String?
+  #endif
+  public func startMonitoring()
+  public func stopMonitoring()
+  public func registerNetwrokChangeStatus(_ handler: @escaping SupremaAC.ACNetworkManager.NetworkStatusBlock)
+  public func unRegisterNetwrokChangeStatus()
+  public func isOnline() -> Swift.Bool
+  @objc deinit
+}
+@objc @objcMembers public class Invitee : ObjectiveC.NSObject {
+  @objc public var cardId: Swift.String
+  @objc public var cardHolderId: Swift.String
+  @objc public var inviteToken: Swift.String
+  @objc public var siteId: Swift.String
+  @objc public var passcode: Swift.String
+  @objc public var email: Swift.String
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public init(_ raw: [Swift.String : Swift.String]?)
+  #endif
+  @objc public func translateToDictionary() -> [Swift.String : Swift.String]
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers public class DevicePostResponse : SupremaAC.Response {
+  @objc public var record: SupremaAC.Device
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class Response : ObjectiveC.NSObject {
+  @objc public var message: Swift.String
+  @objc public var status: Foundation.NSNumber
+  @objc public var errorCode: Swift.String
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class DeviceServiceData {
+  public var initialized: Swift.Bool
+  public var encType: Swift.Int
+  public var publicKeyVersion: Swift.UInt8
+  public var deviceType: Swift.Int
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers public class ACBLEAdminManager : ObjectiveC.NSObject, CoreBluetooth.CBCentralManagerDelegate, CoreBluetooth.CBPeripheralManagerDelegate, CoreBluetooth.CBPeripheralDelegate {
+  public typealias Handler = ([Swift.String : Any]) -> Swift.Void
+  public typealias DeviceQueryBlock = (SupremaAC.ACPeripheral) -> Swift.Void
+  public typealias ResultBlock = (Swift.Bool, [Swift.String : Any]?) -> Swift.Void
+  public typealias BLEDeviceResultBlock = (Swift.Bool) -> Swift.Void
+  public func startScan()
+  public func stopScan()
+  public func isScanning() -> Swift.Bool
+  public func connect(toRegister: SupremaAC.ACPeripheral, deviceData: SupremaAC.Device)
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func setDeviceQueryBlock(_ deviceQueryBlock: SupremaAC.ACBLEAdminManager.DeviceQueryBlock?)
+  #endif
+  public func setRegisterResultBlock(_ resultBlock: @escaping SupremaAC.ACBLEAdminManager.ResultBlock)
+  @objc public func centralManager(_ central: CoreBluetooth.CBCentralManager, didDiscover peripheral: CoreBluetooth.CBPeripheral, advertisementData: [Swift.String : Any], rssi RSSI: Foundation.NSNumber)
+  @objc public func centralManager(_ central: CoreBluetooth.CBCentralManager, didConnect peripheral: CoreBluetooth.CBPeripheral)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func centralManager(_ central: CoreBluetooth.CBCentralManager, didDisconnectPeripheral peripheral: CoreBluetooth.CBPeripheral, error: (any Swift.Error)?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func centralManager(_ central: CoreBluetooth.CBCentralManager, didFailToConnect peripheral: CoreBluetooth.CBPeripheral, error: (any Swift.Error)?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didUpdateValueFor descriptor: CoreBluetooth.CBDescriptor, error: (any Swift.Error)?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didUpdateValueFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
+  #endif
+  @objc public func centralManagerDidUpdateState(_ central: CoreBluetooth.CBCentralManager)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverServices error: (any Swift.Error)?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverCharacteristicsFor service: CoreBluetooth.CBService, error: (any Swift.Error)?)
+  #endif
+  public func applyConfigurationInDevice(_ periphral: SupremaAC.ACPeripheral, applyConfigBlock: @escaping (Swift.Bool) -> Swift.Void)
+  @objc public func peripheralManagerDidUpdateState(_ peripheral: CoreBluetooth.CBPeripheralManager)
+  @objc public func peripheralManagerIsReady(toUpdateSubscribers peripheral: CoreBluetooth.CBPeripheralManager)
+  @objc public func peripheralManager(_ peripheral: CoreBluetooth.CBPeripheralManager, central: CoreBluetooth.CBCentral, didSubscribeTo characteristic: CoreBluetooth.CBCharacteristic)
+  @objc public func peripheralManager(_ peripheral: CoreBluetooth.CBPeripheralManager, central: CoreBluetooth.CBCentral, didUnsubscribeFrom characteristic: CoreBluetooth.CBCharacteristic)
+  @objc public func peripheralManager(_ peripheral: CoreBluetooth.CBPeripheralManager, didReceiveWrite requests: [CoreBluetooth.CBATTRequest])
+  @objc public func peripheralManager(_ peripheral: CoreBluetooth.CBPeripheralManager, didReceiveRead request: CoreBluetooth.CBATTRequest)
+  public func doNotification(_ datas: [Foundation.Data])
+  public func doReadResponse(_ response: [Swift.String : Any], data: Foundation.Data)
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getDeviceData(_ uuidString: Swift.String) -> SupremaAC.Device?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getPublickey(_ uuidString: Swift.String) -> Foundation.Data?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func isAirfobServiceDevice(_ uuidString: Swift.String) -> Swift.Bool?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getOTPData(_ uuid: Swift.String) -> Swift.UInt32?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getConfigurationData(_ uuid: Swift.String) -> Foundation.Data?
+  #endif
+  public func handleSuccessRegistDevice(_ request: CoreBluetooth.CBATTRequest)
+  public func handleFailRegistDevice(_ request: CoreBluetooth.CBATTRequest)
+  public func resetDevice(_ device: SupremaAC.Device, resetResultBlock: @escaping SupremaAC.ACBLEAdminManager.BLEDeviceResultBlock)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func peripheralManager(_ peripheral: CoreBluetooth.CBPeripheralManager, didAdd service: CoreBluetooth.CBService, error: (any Swift.Error)?)
+  #endif
+  public func isTOMDevice(_ uuidString: Swift.String) -> Swift.Bool
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class SiteManagementProvider : ObjectiveC.NSObject {
+  public typealias CompleteSitesHandlerBolck = (SupremaAC.SiteListResponse?, (any Swift.Error)?) -> Swift.Void
+  public typealias CompleteCreateSiteHandlerBolck = (SupremaAC.SiteResponse?, (any Swift.Error)?) -> Swift.Void
+  public typealias CompleteSiteRoleHandlerBolck = (SupremaAC.SiteRoleResponse?, (any Swift.Error)?) -> Swift.Void
+  @objc public func getSitesPage(_ page: Swift.Int, size: Swift.Int, sortType: SupremaAC.SortType, handler: @escaping SupremaAC.SiteManagementProvider.CompleteSitesHandlerBolck)
+  @objc public func getSitePermission(_ siteID: Swift.String, handler: @escaping SupremaAC.SiteManagementProvider.CompleteSiteRoleHandlerBolck)
+  @objc public func createSite(_ name: Swift.String, countryCode: Swift.String, handler: @escaping SupremaAC.SiteManagementProvider.CompleteCreateSiteHandlerBolck)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @objcMembers public class DynamicCardHolder : ObjectiveC.NSObject {
+  @objc public var cardIds: [Swift.String : Swift.String]
+  @objc public var userIds: [Swift.String : Swift.String]
+  @objc public var siteAccessIds: [Swift.String : Swift.String]
+  @objc public var holderKey: Swift.String
+  @objc public var holderId: Swift.String
+  @objc public var holderPw: Swift.String
+  @objc public init(_ raw: [Swift.String : Any])
+  @objc public func addCardId(_ cardId: Swift.String, key: Swift.String)
+  @objc public func removeCardId(_ key: Swift.String)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func getCardId(_ key: Swift.String) -> Swift.String?
+  #endif
+  @objc public func addUserId(_ userId: Swift.String, key: Swift.String)
+  @objc public func removeUserId(_ key: Swift.String)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func getUserId(_ key: Swift.String) -> Swift.String?
+  #endif
+  @objc public func addSiteAccessId(_ siteAccessId: Swift.String, key: Swift.String)
+  @objc public func removeSiteAccessId(_ key: Swift.String)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func getSiteAccessId(_ key: Swift.String) -> Swift.String?
+  #endif
+  @objc public func translateToDictionary() -> [Swift.String : Any]
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers public class EventLogResponse : SupremaAC.Response {
+  @objc public var total: Swift.Int
+  @objc public var size: Swift.Int
+  @objc public var page: Swift.Int
+  @objc public var logs: [SupremaAC.EventLog]
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class EventLogManagementProvider : ObjectiveC.NSObject {
+  @objc public static let sharedInstance: SupremaAC.EventLogManagementProvider
+  public typealias CompleteEventLogHandlerBlock = (SupremaAC.EventLogResponse?, (any Swift.Error)?) -> Swift.Void
+  @objc public func loadEventLogs(_ params: [Swift.String : Any], handler: @escaping SupremaAC.EventLogManagementProvider.CompleteEventLogHandlerBlock)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers public class SiteListResponse : SupremaAC.Response {
+  @objc public var total: Swift.Int
+  @objc public var records: [SupremaAC.Site]
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers public class NoticeDetail : SupremaAC.Notice {
+  @objc public var fileUrl: Swift.String
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class DeviceManagementProvider : ObjectiveC.NSObject {
+  @objc public static let sharedInstance: SupremaAC.DeviceManagementProvider
+  public typealias CompleteDevicesHandlerBolck = (SupremaAC.DevicesResponse?, (any Swift.Error)?) -> Swift.Void
+  public typealias CompleteModifyDeviceHandlerBolck = (SupremaAC.DeviceResponse?, (any Swift.Error)?) -> Swift.Void
+  public typealias CompleteDeleteDeviceHandlerBolck = (SupremaAC.Response?, (any Swift.Error)?) -> Swift.Void
+  public typealias CompletePostDeviceHandlerBolck = (SupremaAC.DevicePostResponse?, (any Swift.Error)?) -> Swift.Void
+  public typealias CompleteDeviceGroupHandlerBlock = (SupremaAC.DeviceGroupResponse?, (any Swift.Error)?) -> Swift.Void
+  @objc public func getDevicesFromSite(_ siteID: Swift.String, page: Swift.Int, size: Swift.Int, sortType: SupremaAC.SortType, handler: @escaping SupremaAC.DeviceManagementProvider.CompleteDevicesHandlerBolck)
+  @objc public func updateDevice(_ siteId: Swift.String, deviceId: Swift.String, params: [Swift.String : Any], handler: @escaping SupremaAC.DeviceManagementProvider.CompleteModifyDeviceHandlerBolck)
+  @objc public func deleteDevice(_ siteID: Swift.String, deviceID: Swift.String, handler: @escaping SupremaAC.DeviceManagementProvider.CompleteDeleteDeviceHandlerBolck)
+  @objc public func postDevice(_ device: SupremaAC.Device, siteID: Swift.String, handler: @escaping SupremaAC.DeviceManagementProvider.CompletePostDeviceHandlerBolck)
+  @objc public func loadDeviceGroup(_ siteId: Swift.String, handler: @escaping SupremaAC.DeviceManagementProvider.CompleteDeviceGroupHandlerBlock)
+  @objc public func loadNoGroupDevice(_ siteId: Swift.String, page: Swift.Int, size: Swift.Int, handler: @escaping SupremaAC.DeviceManagementProvider.CompleteDevicesHandlerBolck)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class Device : ObjectiveC.NSObject {
+  @objc public var id: Swift.String
+  @objc public var deviceGroupId: Swift.String
+  @objc public var serial: Swift.String
+  @objc public var model: Swift.String
+  @objc public var name: Swift.String
+  @objc public var type: Swift.String
+  @objc public var deviceId: Swift.String
+  @objc public var publicKey: Swift.String
+  @objc public var point: Swift.String
+  @objc public var algorithm: Swift.String
+  @objc public var format: Swift.String
+  @objc public var encoded: Swift.String
+  @objc public var fullname: Swift.String
+  @objc public var timeZone: Swift.String
+  @objc public var attribute: Swift.String
+  @objc public var siteId: Swift.String
+  @objc public var authType: Swift.Int
+  @objc public var devicePublicKey: Swift.String
+  @objc public var battery: Swift.String
+  @objc public var batteryWarning: Swift.Bool
+  @objc public var auth: [Swift.String : Any]
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func getDeviceRegisteringInfo(_ isASDevice: Swift.Bool) -> Foundation.Data?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func getDevicePublicKey() -> Foundation.Data?
+  #endif
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class ACLocalDataManager : ObjectiveC.NSObject {
+  @objc public static func configure()
+  @objc public static func confiture(isSharing: Swift.Bool)
+  @objc public static func setSecureKey(key: Foundation.Data)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getSecureKey() -> Foundation.Data?
+  #endif
+  @objc public static func setLogVisibility(_ visibility: Swift.Bool)
+  @objc public static func setSensitivity(_ value: SupremaAC.BLESensitivity) -> Swift.Bool
+  @objc public static func getSensitivity() -> Swift.Int
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getFrameworkVersion() -> Swift.String?
+  #endif
+  @objc public static func canShowLog() -> Swift.Bool
+  @objc public static func setBackgroundScanPermission(_ isAllowed: Swift.Bool)
+  @objc public static func getBackgroundScanPermission() -> Swift.Bool
+  @objc public static func setAcCard(data: Swift.String, siteId: Swift.String = "0") -> Swift.Bool
+  @objc public static func setAcCard(datas: [Swift.String : Swift.String], siteId: Swift.String = "0") -> Swift.Bool
+  @objc public static func setAcCard(_ card: SupremaAC.AcCard) -> Swift.Bool
+  @objc public static func setAcCard(dictionary: Any, cardType: Swift.String, siteId: Swift.String = "0") -> Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getAcCard() -> [SupremaAC.AcCard]?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getAcCard(_ siteId: Swift.String) -> [SupremaAC.AcCard]?
+  #endif
+  @objc public static func setAcCardList(_ cardList: [Swift.String : [SupremaAC.AcCard]])
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getAcCardList() -> [Swift.String : [SupremaAC.AcCard]]?
+  #endif
+  @objc public static func deleteAcCard()
+  @objc public static func deleteAcCard(_ siteId: Swift.String)
+  @objc public static func isThereRegisteredCard() -> Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getDecryptedSecureKey() -> Foundation.Data?
+  #endif
+  @objc public static func setGuardTime(_ time: Swift.Double)
+  @objc public static func getGuardTime() -> Swift.Double
+  @objc public static func setCustomConnectionRSSI(_ limitRSSI: Swift.Int) -> Swift.Bool
+  @objc public static func getConnectionRSSI() -> Swift.Int
+  @objc public static func setInviteeInfo(_ invitee: SupremaAC.Invitee)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getInviteeInfo() -> SupremaAC.Invitee?
+  #endif
+  @objc public static func setCardExtraInfo(_ cardExtraInfo: SupremaAC.CardExtraInfo, siteId: Swift.String = "0")
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getCardExtraInfo() -> SupremaAC.CardExtraInfo?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getCardExtraInfo(_ siteId: Swift.String) -> SupremaAC.CardExtraInfo?
+  #endif
+  @objc public static func setCardExtraInfoList(_ extraInfoList: [Swift.String : SupremaAC.CardExtraInfo])
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getCardExtraInfoList() -> [Swift.String : SupremaAC.CardExtraInfo]?
+  #endif
+  @objc public static func deleteCardExtraInfo(_ siteId: Swift.String = "0")
+  @objc public static func setCardRegistrationDate(_ date: Foundation.Date)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getCardRegistrationDate() -> Foundation.Date?
+  #endif
+  @objc public static func setTXPowerUsage(_ isUseTXPower: Swift.Bool)
+  @objc public static func getTXPowerUsage() -> Swift.Bool
+  @objc public static func setRelaunchOption(_ willBeLaunch: Swift.Bool)
+  @objc public static func getRelaunchOption() -> Swift.Bool
+  @objc public static func checkNeedToRestore() -> Swift.Bool
+  @objc public static func setUsingCard(_ siteId: Swift.String)
+  @objc public static func setUsingCard(_ siteId: Swift.String, isSharing: Swift.Bool)
+  @objc public static func setLastUsedCard()
+  @objc public static func setDynamicCardHolder(_ dynamicCardHolder: SupremaAC.DynamicCardHolder)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getDynamicCardHolder() -> SupremaAC.DynamicCardHolder?
+  #endif
+  @objc public static func setFcmToken(_ token: Swift.String)
+  @objc public static func getFcmToken() -> Swift.String
+  @objc public static func getUsingCard() -> Swift.String
+  @objc public static func setNetworkDisconnectedTime(_ time: Swift.Int)
+  #if compiler(>=5.3) && $NonescapableTypes
+  public static func getNetworkDisconnectedTime() -> Swift.Int?
+  #endif
+  @objc public static func deleteNetworkDisconnectedTime()
+  @objc public static func setAcUser(_ user: SupremaAC.AcUser, siteId: Swift.String)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getAcUser() -> SupremaAC.AcUser?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getAcUser(_ siteId: Swift.String) -> SupremaAC.AcUser?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getAcUserList() -> [Swift.String : SupremaAC.AcUser]?
+  #endif
+  @objc public static func deleteAcUser(_ siteId: Swift.String)
+  @objc public static func setCardTemplate(_ template: Swift.String, cardId: Swift.String)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getCardTemplate(_ cardId: Swift.String) -> Swift.String?
+  #endif
+  @objc public static func deleteCardTemplate(_ cardId: Swift.String)
+  @objc public static func deleteCardHolderInfo(_ siteId: Swift.String)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getCardId(_ siteId: Swift.String) -> Swift.String?
+  #endif
+  @objc public static func setStoredLoginEmail(_ email: Swift.String)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getStoredLoginEmail() -> Swift.String?
+  #endif
+  @objc public static func deleteStoredLoginEmail()
+  @objc public static func setSharingSiteInfo(_ info: [Swift.String : Swift.String]) -> Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getSharingSiteInfo() -> [Swift.String : Swift.String]?
+  #endif
+  @objc public static func refreshPrivateKey()
+  @objc public static func setSecurityAuthenticationData(_ value: Swift.String, key: Swift.String)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getSecurityAuthenticationData(_ key: Swift.String) -> Swift.String?
+  #endif
+  @objc public static func hasSecurityAuthenticationData(_ key: Swift.String) -> Swift.Bool
+  @objc public static func clearSecurityAuthenticationData(_ key: Swift.String)
+  @objc public static func clearSecurityAuthenticationData()
+  @objc public static func setMigrationAccessDevice(_ isMigration: Swift.Bool)
+  @objc public static func isMigrationAccessDevice() -> Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getTemplate(_ type: Swift.Int, version: Swift.Int) -> Foundation.Data?
+  #endif
+  @objc public static func storeTemplate(_ type: Swift.Int, version: Swift.Int, data: Foundation.Data) -> Swift.Bool
+  @objc public static func removeTemplate(_ siteId: Swift.String)
+  @objc public static func setSDKValidityGraceTime(_ time: Swift.Int)
+  @objc public static func deleteSDKValidityGraceTime()
+  @objc public static func setDeviceCalibrationOffset(_ value: Swift.Int)
+  @objc public static func getDeviceCalibrationOffset() -> Swift.Int
+  @objc public static func checkNeedToMigration() -> Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class CardHolderProvider : ObjectiveC.NSObject {
+  @objc public static let sharedInstance: SupremaAC.CardHolderProvider
+  public typealias CardCompleteBolck = ((any Swift.Error)?) -> Swift.Void
+  public typealias CardAuthCompleteBolck = (ObjectiveC.NSInteger, (any Swift.Error)?) -> Swift.Void
+  public typealias PortraitCompleteBolck = (Swift.String?, (any Swift.Error)?) -> Swift.Void
+  public typealias AccessPermissionCompleteBolck = (ObjectiveC.NSInteger, Foundation.Data, Foundation.Data) -> Swift.Void
+  @objc public var baseAPIURL: Swift.String
+  @objc override dynamic public init()
+  @objc public func postDeepLinkToken(_ handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc public func cardHolderLogin(_ handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc public func getCardInfo(_ handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc public func getExtraCardInfo(_ handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc public func getDynamicCard(_ handler: @escaping SupremaAC.CardHolderProvider.CardAuthCompleteBolck)
+  @objc public func getDynamicExtraInfo(_ handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc public func dynamicCardHolderLogin(_ handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc public func dynamicCardHolderLogin(_ id: Swift.String, password: Swift.String, handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc public func getUserInfo(_ siteId: Swift.String, handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc public func getCardTemplate(_ cardId: Swift.String, handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc public func getCardAccessLevels(_ siteId: Swift.String, handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc public func getCardAccessLevel(_ alId: Swift.String, handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc public func setFcmTokenToServer(_ token: Swift.String, handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc public func dynamicCardSyncConfirmed(_ siteId: Swift.String, status: Swift.Int, handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc public func setDynamicCardStatus(_ status: Swift.Int, handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc public func getInviteToken(_ parameters: [Swift.String : Swift.String], handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class SiteRole : ObjectiveC.NSObject {
+  @objc public var id: Swift.String
+  @objc public var email: Swift.String
+  @objc public var name: Swift.String
+  @objc public var role: Swift.String
+  @objc deinit
+}
+@objc public enum CardDataType : Swift.Int {
+  case KeyCardData = 1, KeyStartDateEPOCH, KeyEndDateEPOCH, KeyRefreshIntervalUnitHour, KeyFormatCode, KeySignature, KeyCardDataBit, KeyCardEncodingType, DeviceSerialNumber = 101, DevicePublicKey = 102, DevicePoint = 103, DeviceAlgorithm = 104, DeviceFormat = 105, DeviceEncoded = 106, DeviceType = 107
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum APBDeviceConnectionStatus {
+  case None, Tagging, RegisterStart, Register, SetUUID, RegisterComplete, RegisterCompleted, Delete, DeleteComplete, DeleteCompleted, Upgrade, UpgradeComplete, UpgradeCompleted, SetDeviceType, SetDeviceTypeComplete
+  public static func == (a: SupremaAC.APBDeviceConnectionStatus, b: SupremaAC.APBDeviceConnectionStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objcMembers public class Constants {
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class RandomKeyType : ObjectiveC.NSObject {
+  @objc public var r1: Swift.UInt32
+  @objc public var r2: Swift.UInt32
+  @objc public var r3: Swift.UInt32
+  @objc public var r4: Swift.UInt32
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class Notice : ObjectiveC.NSObject {
+  @objc public var id: Swift.String
+  @objc public var siteId: Swift.String
+  @objc public var accountId: Swift.Int
+  @objc public var createdAt: Swift.String
+  @objc public var lastModifiedAt: Swift.String
+  @objc public var title: Swift.String
+  @objc public var accountEmali: Swift.String
+  @objc deinit
+}
+@objc public protocol SupremaACDelegate {
+  @objc func discoveredDevice(_ device: SupremaAC.ACPeripheral)
+  @objc func receivedTomStatus(_ cmd: Swift.UInt8, result: Swift.Int)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers public class SupremaACController : ObjectiveC.NSObject {
+  @objc public static let sharedInstance: SupremaAC.SupremaACController
+  public typealias LocationServiceResultBlock = (CoreLocation.CLAuthorizationStatus, Swift.Int) -> Swift.Void
+  public typealias BLEServiceResultBlock = (CoreBluetooth.CBManagerState) -> Swift.Void
+  public typealias OnBleReadyBlock = (Swift.Bool) -> Swift.Void
+  public typealias BLEStatusObserverBlock = (SupremaAC.BLEProcessStruct) -> Swift.Void
+  public typealias DeviceSearchBlock = (SupremaAC.ACPeripheral) -> Swift.Void
+  public typealias DeviceRegisterResultBlock = (Swift.Bool, [Swift.String : Any]?) -> Swift.Void
+  public typealias onCompletion<T> = (T) -> Swift.Void
+  public typealias onError = (any Swift.Error) -> Swift.Void
+  @objc public var locationServiceResult: SupremaAC.SupremaACController.LocationServiceResultBlock?
+  @objc public var bleServiceResult: SupremaAC.SupremaACController.BLEServiceResultBlock?
+  @objc public var onBLEReady: SupremaAC.SupremaACController.OnBleReadyBlock?
+  @objc public var bleStatusObserverBlock: SupremaAC.SupremaACController.BLEStatusObserverBlock?
+  @objc public var delegate: (any SupremaAC.SupremaACDelegate)?
+  @objc public func initialize(_ siteId: Swift.String)
+  @objc public func prefareBLEService(_ bleServiceResult: @escaping SupremaAC.SupremaACController.BLEServiceResultBlock, onBLEReady: @escaping SupremaAC.SupremaACController.OnBleReadyBlock)
+  @objc public func registerBLEStatusBlock(_ bleStatusObserverBlock: @escaping SupremaAC.SupremaACController.BLEStatusObserverBlock)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func registDeviceQueryBlock(_ searchBlock: SupremaAC.SupremaACController.DeviceSearchBlock?)
+  #endif
+  @objc public func startScan()
+  @objc public func stopScan()
+  @objc public func isScanning() -> Swift.Bool
+  @objc public func disconnect()
+  @objc public func loadCriterionRSSI()
+  @objc public func changeScanModeToAdmin(_ isAdminMode: Swift.Bool)
+  @objc public func setRegisterResultBlock(_ registerResultBlock: @escaping SupremaAC.SupremaACController.DeviceRegisterResultBlock)
+  @objc public func registerDevice(_ peripheral: SupremaAC.ACPeripheral, deviceData: SupremaAC.Device)
+  @objc public func prepareLocationService(_ locationServiceResult: @escaping SupremaAC.SupremaACController.LocationServiceResultBlock)
+  @objc public func requestLocationAuthrizationForBackgroundScan()
+  @objc public func startMonitoring()
+  @objc public func stopMonitoring()
+  @objc public func isExpiredCredential() -> Swift.Bool
+  @objc public func resetDeviceForAdmin(_ device: SupremaAC.Device, resetResultBlock: @escaping (Swift.Bool) -> Swift.Void)
+  @objc public func checkNeedtoRestore() -> Swift.Bool
+  @objc public func setFcmToken(_ token: Swift.String)
+  @objc public func getFcmToken() -> Swift.String
+  @objc public func setCardActivated(_ isActive: Swift.Bool, isSharing: Swift.Bool)
+  @objc public func setCardActivated(_ isActive: Swift.Bool)
+  @objc public func getCardActivated() -> Swift.Bool
+  @objc public func getSharingCardActivated() -> Swift.Bool
+  @objc public func getDynamicCard(_ handler: @escaping SupremaAC.CardHolderProvider.CardAuthCompleteBolck)
+  @objc public func getDynamicExtraCardInfo(_ handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc public func dynamicCardHolderLogin(_ id: Swift.String, password: Swift.String, handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc public func dynamicCardSyncConfirmed(_ siteId: Swift.String, status: Swift.Int, handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc public func setDynamicCardStatus(_ status: Swift.Int, handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc public func registerNetworkChangeStatus(_ handler: @escaping SupremaAC.ACNetworkManager.NetworkStatusBlock)
+  @objc public func unRegisterNetworkChangeStatus()
+  @objc public func getUserInfo(_ siteId: Swift.String, handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc public func getCardTemplate(_ cardId: Swift.String, handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc public func removeCardData(_ siteId: Swift.String)
+  @objc public func connectNearestDevice()
+  @objc public func getInviteToken(_ parameters: [Swift.String : Swift.String], handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc public func getAccuracyAuthorizationStatus() -> Swift.Int
+  @objc public func syncronizeTimeWithServer()
+  @objc public func setServerTime(_ time: Foundation.TimeInterval)
+  @objc public func requestAccessLevels(_ siteId: Swift.String, handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc public func requestAccessLevel(_ alId: Swift.String, handler: @escaping SupremaAC.CardHolderProvider.CardCompleteBolck)
+  @objc public func getCustomAccessLevelIds(_ siteId: Swift.String) -> [Swift.String]
+  @objc public func getAccessLevelIds(_ siteId: Swift.String) -> [Swift.String]
+  @objc public func getAccessLevelsLastUpdatedAt(_ siteId: Swift.String) -> Swift.Double
+  @objc public func getAccessLevelLastUpdatedAt(_ accessLevelId: Swift.String) -> Swift.Double
+  @objc public func removeAccessLevel(_ id: Swift.String)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func setUsingUploadLog(_ isUsed: Swift.Bool, handler: (() -> Swift.Void)?)
+  #endif
+  @objc public func setLogServerURL(_ url: Swift.String)
+  @objc public func isRemainLogToBeUplodaed() -> Swift.Bool
+  @objc public func applyConfigurationInDevice(_ peripheral: SupremaAC.ACPeripheral, applyConfigBlock: @escaping (Swift.Bool) -> Swift.Void)
+  @objc public func setAPBDeviceType(_ peripheral: SupremaAC.ACPeripheral, type: Swift.Int, data: Swift.Int, resultBlock: @escaping (Swift.Bool) -> Swift.Void)
+  @objc public func setAccessLevels(_ datas: [[Swift.String : Any]])
+  @objc public func removeAccessLevels(_ siteId: Swift.String)
+  @objc public func setAccessLevelsExtraInfo(_ siteId: Swift.String, cardId: Swift.String, lastModifiedAt: Swift.Double)
+  @objc public func removeAccessLevelsExtraInfo(_ siteId: Swift.String)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func generateBugReport(_ type: Swift.Int, siteId: Swift.String?, info: [Swift.String : Swift.String]?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func updateBugReport(_ type: Swift.Int, siteId: Swift.String?, info: [Swift.String : Swift.String])
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func removeBugReport(_ type: Swift.Int, siteId: Swift.String?)
+  #endif
+  @objc public func requestSendBugReports(_ handler: @escaping (Swift.Int) -> Swift.Void)
+  @objc public func clearDiscoverPeripheralList()
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func requestGetWholeUserList(_ siteId: Swift.String, size: Swift.Int, page: Swift.Int, filter: [Swift.String : Swift.String]?, handler: @escaping ([[Swift.String : Any]]?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func requestSendBadgeToUser(_ userId: Swift.String, badges: [[Swift.String : Any]], handler: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func requestGetUsersWhoFoundMe(_ userId: Swift.String, handler: @escaping ([[Swift.String : Any]]?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func requestGetReceivedBadge(_ userId: Swift.String, handler: @escaping ([Swift.String : Any]?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  @objc public func startAdvertisingForBadge(_ siteId: Swift.String)
+  @objc public func stopAdvertising()
+  @objc public func recordAppLaunchTime(_ timestamp: Foundation.TimeInterval)
+  @objc public func recordAppTerminateTime(_ timestamp: Foundation.TimeInterval)
+  @objc public func getLatestApplicationVersion(_ handler: @escaping SupremaAC.AuthenticationProvider.CompleteVersionHandlerBlock)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func addActivateCardErrorLog(_ siteId: Swift.String? = "", log: Swift.String)
+  #endif
+  @objc public func requestAfterAddingLog(log: Swift.String)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func load(universalLink: Foundation.URL, onCompletion: @escaping SupremaAC.SupremaACController.onCompletion<Foundation.URL?>, onError: @escaping SupremaAC.SupremaACController.onError)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func load(universalLinkWithScheme: Foundation.URL, onCompletion: @escaping SupremaAC.SupremaACController.onCompletion<Foundation.URL?>, onError: @escaping SupremaAC.SupremaACController.onError)
+  #endif
+  @objc deinit
+}
+extension SupremaAC.SupremaACController {
+  @objc dynamic public func discoveredReadyToSendBadge(_ value: Swift.String)
+  @objc dynamic public func discoveredDevice(_ device: SupremaAC.ACPeripheral)
+  public func receivedSendTaggingData(_ device: SupremaAC.APBDevice)
+  @objc dynamic public func receivedStoreTemplateData(_ uuidString: Swift.String, data: Foundation.Data)
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class AuthenticationProvider : ObjectiveC.NSObject {
+  @objc public static let sharedInstance: SupremaAC.AuthenticationProvider
+  public typealias CompleteSiteLoginHandlerBolck = (SupremaAC.LoginResponse?, (any Swift.Error)?) -> Swift.Void
+  public typealias CompleteVersionHandlerBlock = (Swift.String?, Swift.Bool) -> Swift.Void
+  public typealias CompleteSDKExpiryHandlerBlock = (Swift.Int, Swift.Int) -> Swift.Void
+  @objc public func login(_ email: Swift.String, password: Swift.String, handler: @escaping SupremaAC.AuthenticationProvider.CompleteSiteLoginHandlerBolck)
+  @objc public func authentication(_ email: Swift.String, code: Swift.String, handler: @escaping SupremaAC.AuthenticationProvider.CompleteSiteLoginHandlerBolck)
+  @objc public func getLatestApplicationVersion(_ handler: @escaping SupremaAC.AuthenticationProvider.CompleteVersionHandlerBlock)
+  @objc public func getSDKExpiryDate(_ siteId: Swift.String, handler: @escaping SupremaAC.AuthenticationProvider.CompleteSDKExpiryHandlerBlock)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class ACSecurityManager : ObjectiveC.NSObject {
+  @objc public static let sharedInstance: SupremaAC.ACSecurityManager
+  @objc public func setTagData(data: Foundation.Data)
+  @objc public func tagData() -> Foundation.Data
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func AES128OperationForStorageWithEncriptionMode(_ operation: CommonCrypto.CCOperation, key: Foundation.Data, givenData: Foundation.Data, iv: Foundation.Data?) -> Foundation.Data?
+  #endif
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class ACPeripheral : ObjectiveC.NSObject {
+  public struct DeviceServiceType {
+  }
+  @objc public var modelIdentifier: Swift.String
+  @objc public var accessDate: Foundation.Date
+  @objc public var RSSI: Foundation.NSNumber
+  @objc public var peripheral: CoreBluetooth.CBPeripheral
+  public var oldRSSI: Swift.Int?
+  public var startRSSI: Swift.Int?
+  @objc public var registered: Swift.Int
+  @objc public var isRenewal: Swift.Bool
+  @objc public var serviceType: Swift.Int
+  @objc public var packetParser: SupremaAC.BLEPacketParser?
+  public var apbDevice: SupremaAC.APBDevice?
+  @objc public func changeValue(_ targetPeripheral: SupremaAC.ACPeripheral)
+  @objc public func getDeviceAttribute() -> Swift.String
+  @objc public func setDevicePublicKey(_ key: Swift.String)
+  @objc public func getSerialNumber() -> Swift.String
+  @objc public func getAPBDeviceBattery() -> Swift.Int
+  @objc public func getAPBDeviceMode() -> Swift.Int
+  @objc deinit
+}
+@objc @objcMembers public class AcUser : ObjectiveC.NSObject {
+  @objc public var siteName: Swift.String
+  @objc public var userId: Swift.String
+  @objc public var cardId: Swift.String
+  @objc public var email: Swift.String
+  @objc public var phone: Swift.String
+  @objc public var userImage: Swift.String
+  @objc public var userKey: Swift.String
+  @objc public var antiFake: Swift.Bool
+  @objc public var taggable: Swift.Bool
+  @objc public var tagOnly: Swift.Bool
+  @objc public var useBadge: Swift.Bool
+  @objc public var meta: [Swift.String : Any]
+  @objc public var cards: [[Swift.String : Any]]
+  @objc public var isRequiredUpdate: Swift.Bool
+  @objc public var isPublic: Swift.Bool
+  @objc public init(_ raw: [Swift.String : Any])
+  @objc public func translateToDictionary() -> [Swift.String : Any]
+  @objc public func hasMetaData(_ key: Swift.String) -> Swift.Bool
+  @objc public func getMetaData(_ key: Swift.String) -> Swift.String
+  @objc public func hasUserData(_ key: Swift.String) -> Swift.Bool
+  @objc public func getUserData(_ key: Swift.String) -> Swift.String
+  @objc public func hasCardPeriod(_ cardId: Swift.String) -> Swift.Bool
+  @objc public func getCardStartDate(_ cardId: Swift.String) -> Swift.Double
+  @objc public func getCardEndDate(_ cardId: Swift.String) -> Swift.Double
+  @objc deinit
+}
+@objc @objcMembers public class DeviceGroup : ObjectiveC.NSObject {
+  @objc public var id: Swift.String
+  @objc public var parentDeviceGroupId: Swift.String
+  @objc public var name: Swift.String
+  @objc public var deviceIds: [Swift.String]
+  @objc public var devices: [SupremaAC.Device]
+  @objc public init(_ raw: [Swift.String : Any])
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class AverageFilter {
+  public var canConnect: Swift.Bool
+  public var model: SupremaAC.ACPeripheral?
+  public func filterModel(model: SupremaAC.ACPeripheral)
+  public func calculateAverage()
+  @objc deinit
+}
+public protocol JWT {
+  var header: [Swift.String : Any] { get }
+  var body: [Swift.String : Any] { get }
+  #if compiler(>=5.3) && $NonescapableTypes
+  var signature: Swift.String? { get }
+  #endif
+  var string: Swift.String { get }
+  #if compiler(>=5.3) && $NonescapableTypes
+  var expiresAt: Foundation.Date? { get }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  var issuer: Swift.String? { get }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  var subject: Swift.String? { get }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  var audience: [Swift.String]? { get }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  var issuedAt: Foundation.Date? { get }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  var notBefore: Foundation.Date? { get }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  var identifier: Swift.String? { get }
+  #endif
+  var expired: Swift.Bool { get }
+}
+extension SupremaAC.JWT {
+  public func claim(name: Swift.String) -> SupremaAC.Claim
+  public subscript(claim: Swift.String) -> SupremaAC.Claim {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers public class ACPrivateDataManager : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc deinit
+}
+public enum ReachabilityError : Swift.Error {
+  case failedToCreateWithAddress(Darwin.sockaddr, Swift.Int32)
+  case failedToCreateWithHostname(Swift.String, Swift.Int32)
+  case unableToSetCallback(Swift.Int32)
+  case unableToSetDispatchQueue(Swift.Int32)
+  case unableToGetFlags(Swift.Int32)
+}
+@available(*, unavailable, renamed: "Notification.Name.reachabilityChanged")
+public let ReachabilityChangedNotification: Foundation.NSNotification.Name
+extension Foundation.NSNotification.Name {
+  public static let reachabilityChanged: Foundation.Notification.Name
+}
+public class Reachability {
+  public typealias NetworkReachable = (SupremaAC.Reachability) -> ()
+  public typealias NetworkUnreachable = (SupremaAC.Reachability) -> ()
+  @available(*, unavailable, renamed: "Connection")
+  public enum NetworkStatus : Swift.CustomStringConvertible {
+    case notReachable, reachableViaWiFi, reachableViaWWAN
+    public var description: Swift.String {
+      get
+    }
+    public static func == (a: SupremaAC.Reachability.NetworkStatus, b: SupremaAC.Reachability.NetworkStatus) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum Connection : Swift.CustomStringConvertible {
+    @available(*, deprecated, renamed: "unavailable")
+    case none
+    case unavailable, wifi, cellular
+    public var description: Swift.String {
+      get
+    }
+    public static func == (a: SupremaAC.Reachability.Connection, b: SupremaAC.Reachability.Connection) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public var whenReachable: SupremaAC.Reachability.NetworkReachable?
+  public var whenUnreachable: SupremaAC.Reachability.NetworkUnreachable?
+  @available(*, deprecated, renamed: "allowsCellularConnection")
+  final public let reachableOnWWAN: Swift.Bool
+  public var allowsCellularConnection: Swift.Bool
+  public var notificationCenter: Foundation.NotificationCenter
+  @available(*, deprecated, renamed: "connection.description")
+  public var currentReachabilityString: Swift.String {
+    get
+  }
+  @available(*, unavailable, renamed: "connection")
+  public var currentReachabilityStatus: SupremaAC.Reachability.Connection {
+    get
+  }
+  public var connection: SupremaAC.Reachability.Connection {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  required public init(reachabilityRef: SystemConfiguration.SCNetworkReachability, queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil, notificationQueue: Dispatch.DispatchQueue? = .main)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  convenience public init(hostname: Swift.String, queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil, notificationQueue: Dispatch.DispatchQueue? = .main) throws
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  convenience public init(queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil, notificationQueue: Dispatch.DispatchQueue? = .main) throws
+  #endif
+  @objc deinit
+}
+extension SupremaAC.Reachability {
+  public func startNotifier() throws
+  public func stopNotifier()
+  @available(*, deprecated, message: "Please use `connection != .none`")
+  public var isReachable: Swift.Bool {
+    get
+  }
+  @available(*, deprecated, message: "Please use `connection == .cellular`")
+  public var isReachableViaWWAN: Swift.Bool {
+    get
+  }
+  @available(*, deprecated, message: "Please use `connection == .wifi`")
+  public var isReachableViaWiFi: Swift.Bool {
+    get
+  }
+  public var description: Swift.String {
+    get
+  }
+}
+public enum JWTDecodeError : Foundation.LocalizedError, Swift.CustomDebugStringConvertible {
+  case invalidBase64URL(Swift.String)
+  case invalidJSON(Swift.String)
+  case invalidPartCount(Swift.String, Swift.Int)
+  public var localizedDescription: Swift.String {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var errorDescription: Swift.String? {
+    get
+  }
+  #endif
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers public class DeviceResponse : SupremaAC.Response {
+  @objc public var record: SupremaAC.Device
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class APBDevice {
+  public var uuidString: Swift.String {
+    get
+  }
+  public var registered: Swift.Bool {
+    get
+  }
+  public var isMocaDevice: Swift.Bool {
+    get
+  }
+  public var modelIdentifier: Swift.String {
+    get
+  }
+  public var supportServiceBySiteId: Swift.Bool {
+    get
+  }
+  public func setRegisterInfo(_ info: [Swift.String : Any])
+  public func setDevicePublicKey(_ key: Foundation.Data)
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getPeripheral() -> CoreBluetooth.CBPeripheral?
+  #endif
+  public func getSerialNumber() -> Swift.String
+  public func getSerialHexData() -> Foundation.Data
+  public func getRssi() -> Swift.Int
+  public func getSiteId() -> Swift.String
+  public func getSiteIdToInt() -> Swift.Int
+  public func getBattery() -> Swift.Int
+  public func getRegisterDeviceData() -> Foundation.Data
+  public func getDevicePublicKey() -> Foundation.Data
+  public func getDevicePublicKeyString() -> Swift.String
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getDeviceId() -> Swift.String?
+  #endif
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objcMembers public class BugReport {
+  @objc public func updateInfo(_ info: [Swift.String : Swift.String])
+  @objc public func setInfo(_ info: [Swift.String : Swift.String])
+  @objc public func getInfo() -> [Swift.String : Swift.String]
+  @objc deinit
+}
+extension SupremaAC.CardDataType : Swift.Equatable {}
+extension SupremaAC.CardDataType : Swift.Hashable {}
+extension SupremaAC.CardDataType : Swift.RawRepresentable {}
+extension SupremaAC.APBDeviceConnectionStatus : Swift.Equatable {}
+extension SupremaAC.APBDeviceConnectionStatus : Swift.Hashable {}
+@available(*, unavailable, renamed: "Connection")
+extension SupremaAC.Reachability.NetworkStatus : Swift.Equatable {}
+@available(*, unavailable, renamed: "Connection")
+extension SupremaAC.Reachability.NetworkStatus : Swift.Hashable {}
+extension SupremaAC.Reachability.Connection : Swift.Equatable {}
+extension SupremaAC.Reachability.Connection : Swift.Hashable {}
